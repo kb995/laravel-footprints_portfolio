@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="{{ asset('./css/app.css' )}}" rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -82,6 +83,9 @@
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
+                </div>
+                <div class="alert alert-danger">
+                    aaa
                 </div>
 
                 <div class="links">
