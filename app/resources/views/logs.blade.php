@@ -20,14 +20,14 @@
     @endif  --}}
 
     {{--  行動ログフォーム  --}}
-    {{--  <form action="{{ route('log.create', ['day' => $current_day]) }}" method="post" class="card text-center px-5 bg-light">
+    <form action="{{ route('log.create', ['day' => $current_day]) }}" method="post" class="card text-center px-5 bg-light">
         @csrf
         <div class="form-group p-3  mb-0 row">
             <input class="form-control col-3" type="time" name="time">
             <input class="form-control col-7" type="text" name="log" placeholder="行動ログを記録しましょう">
             <button type="submit" class="btn btn-primary col-2">追加</button>
         </div>
-    </form>  --}}
+    </form>
 
     {{--  行動ログ一覧  --}}
     <table class="card text-left p-4 bg-dark log-scroll">
