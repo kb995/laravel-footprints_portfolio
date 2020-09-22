@@ -26,7 +26,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // ログイン後のリダイレクト
+    protected $redirectTo = '/logs';
 
     /**
      * Create a new controller instance.
@@ -38,6 +39,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    // ログアウト後のリダイレクト
     protected function loggedOut(Request $request)
      {
          return redirect(route('login'));
