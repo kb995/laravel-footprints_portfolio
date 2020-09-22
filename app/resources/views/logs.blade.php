@@ -1,7 +1,7 @@
 @extends('layouts/layout')
 
 @section('styles')
-    {{--  @include('libs.flatpickr.styles')  --}}
+    @include('libs.flatpickr.styles')
 @endsection
 
 @section('content')
@@ -24,10 +24,32 @@
         @csrf
         <div class="form-group p-3  mb-0 row">
             <input class="form-control col-3" type="time" name="time">
-            <input class="form-control col-7" type="text" name="log" placeholder="行動ログを記録しましょう">
+            <input class="form-control col-7" type="text" name="log" placeholder="積み上げを記録しましょう">
             <button type="submit" class="btn btn-primary col-2">追加</button>
         </div>
     </form>
+
+
+    {{--  日付移動 /　作成  --}}
+    <form action="{{ route('day.create') }}" method="post" class="my-2">
+        @csrf
+
+        日付一覧
+        @isset($days)
+        <select onChange="location.href=value;" class="mr-4">
+            @foreach($days as $day)
+                <option value="{{ route('logs', ['day' => $day]) }}">
+                    {{ $day->date }}
+                </option>
+            @endforeach
+        </select>
+        @endisset
+
+        <input type="text" name="date" id="date" value="{{ date('Y/m/d') }}" />
+        <button type="submit" class="btn btn-secondary btn-sm">追加</button>
+    </form>
+
+
 
     {{--  行動ログ一覧  --}}
     <table class="card text-left p-4 bg-dark log-scroll">
@@ -66,32 +88,10 @@
             @endisset
         </div>
     </table>
-
-    {{--  日付の選択/追加  --}}
-    {{--  <form action="{{ route('day.create') }}" method="post" class="card text-center px-5 bg-light">
-        @csrf
-        <div class="form-group p-3  mb-0 row">
-            <input type="text" class="form-control col-9" name="date" id="date" value="{{ date('Y/m/d') }}" />
-            <button type="submit" class="btn btn-primary col-2">追加</button>
-        </div>
-    </form>  --}}
-
-    {{--  <div class="mt-4">
-        日付一覧
-        @isset($days)
-            @foreach($days as $day)
-            <p>
-                <a href="{{ route('logs', ['day' => $day]) }}">
-                    {{ $day->date }}
-                </a>
-            </p>
-            @endforeach
-        @endisset
-    </div>  --}}
 </section>
 @endsection
 
-{{--  @section('scripts')
+@section('scripts')
     <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ja.js"></script>
     <script>
@@ -101,4 +101,4 @@
         minDate: new Date()
     });
     </script>
-@endsection  --}}
+@endsection
