@@ -79,9 +79,9 @@
                     @endisset
                 </td>
                 <td class="pl-2">
-                    {{--  <a class="log-link" href="{{ route('log.edit', ['log' => $log]) }}">  --}}
+                    <a class="log-link" href="{{ route('log.edit', ['log' => $log]) }}">
                         {{ $log->log }}
-                    {{--  </a>  --}}
+                    </a>
                 </td>
             </tr>
             @endforeach
@@ -89,6 +89,8 @@
         </div>
     </table>
 </section>
+
+
 @endsection
 
 @section('scripts')

@@ -29,4 +29,26 @@ class LogController extends Controller
         return redirect()->route('logs', ['day' => $day]);
     }
 
+    public function edit(int $log) {
+        $log = Log::find($log);
+        return view('edit', compact('log'));
+    }
+
+    public function update(int $log, Request $request) {
+        $log = Log::find($log);
+        $log->log = $request->log;
+        $log->time = $request->time;
+        $log->save();
+
+        return redirect()->route('logs', ['day' => $log->date_id]);
+}
+
+    public function destroy(int $log) {
+        $log = Log::find($log);
+        $log->delete();
+
+        return redirect()->route('logs', ['day' => $log->date_id]);
+    }
+
+
 }
