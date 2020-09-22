@@ -9,23 +9,23 @@
     <h1 class="text-center my-5 log-title">Logs</h1>
 
     {{--  エラー表示  --}}
-    {{--  @if ($errors->any())
+    @if ($errors->any())
     <div class="alert alert-danger">
-        <ul>
+        <ul class="mb-0">
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div>
-    @endif  --}}
+    @endif
 
     {{--  行動ログフォーム  --}}
     <form action="{{ route('log.create', ['day' => $current_day]) }}" method="post" class="card text-center px-5 bg-light">
         @csrf
         <div class="form-group p-3  mb-0 row">
-            <input class="form-control col-3" type="time" name="time">
-            <input class="form-control col-7" type="text" name="log" placeholder="積み上げを記録しましょう">
-            <button type="submit" class="btn btn-primary col-2">追加</button>
+            <input class="form-control col-2" type="time" name="time">
+            <input class="form-control col-8" type="text" name="log" placeholder="積み上げを記録しましょう">
+            <button type="submit" class="btn btn-success col-2">追加</button>
         </div>
     </form>
 

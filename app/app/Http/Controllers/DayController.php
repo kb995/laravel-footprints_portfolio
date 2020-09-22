@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\DayRequest;
 use App\Models\Day;
 use App\User;
 
 class DayController extends Controller
 {
-    public function create(Request $request) {
+    public function create(DayRequest $request) {
         $user = User::find(Auth::id());
         $current_day = new Day();
         $current_day->date = $request->date;

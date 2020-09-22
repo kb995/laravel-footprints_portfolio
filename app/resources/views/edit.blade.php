@@ -3,6 +3,17 @@
 @section('content')
 <div class="container w-50">
     <h1 class="text-center my-5 log-title">Edit</h1>
+    {{--  エラー表示  --}}
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     <form action="{{ route('log.update', ['log' => $log]) }}" method="post" class="card text-center px-5 bg-light">
         @csrf
         <div class="form-group p-3  mb-0 row">
