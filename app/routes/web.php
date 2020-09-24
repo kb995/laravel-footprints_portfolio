@@ -15,6 +15,9 @@ Route::group(['middleware' => 'auth'], function() {
     // Log 削除
     Route::post('/log/destroy/{log}','LogController@destroy')->name('log.destroy');
 
+
+    // 更新
+    //
 });
 
 
