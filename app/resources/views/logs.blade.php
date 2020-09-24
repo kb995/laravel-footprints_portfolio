@@ -6,6 +6,7 @@
 
 @section('content')
 <section class="container">
+    <div class="w-50 mx-auto">
     <h1 class="text-center my-5 log-title">Logs</h1>
 
     {{--  エラー表示  --}}
@@ -20,7 +21,7 @@
     @endif
 
     {{--  行動ログフォーム  --}}
-    <form action="{{ route('log.create', ['day' => $current_day]) }}" method="post" class="card text-center px-5 bg-light">
+    <form action="{{ route('log.create', ['day' => $current_day]) }}" method="post" class="card text-center px-5 my-5 bg-light">
         @csrf
         <div class="form-group p-3  mb-0 row">
             <input class="form-control col-2" type="time" name="time">
@@ -31,65 +32,56 @@
 
 
     {{--  日付移動 /　作成  --}}
-    <form action="{{ route('day.create') }}" method="post" class="my-2">
-        @csrf
+    <div class="pl-4 border">
+        <form action="{{ route('day.create') }}" method="post" class="mt-2">
+            @csrf
+            <label for="" class="date-text">Days</label>
+            @isset($days)
+            <select onChange="location.href=value;" class="mr-5">
+                @foreach($days as $day)
+                    <option value="{{ route('logs', ['day' => $day]) }}">
+                        {{ $day->date }}
+                    </option>
+                @endforeach
+            </select>
+            @endisset
 
-        日付一覧
-        @isset($days)
-        <select onChange="location.href=value;" class="mr-4">
-            @foreach($days as $day)
-                <option value="{{ route('logs', ['day' => $day]) }}">
-                    {{ $day->date }}
-                </option>
-            @endforeach
-        </select>
-        @endisset
-
-        <input type="text" name="date" id="date" value="{{ date('Y/m/d') }}" />
-        <button type="submit" class="btn btn-secondary btn-sm">追加</button>
-    </form>
-
+            <label for="" class="date-text">New Day</label>
+            <input type="text" name="date" id="date" value="{{ date('Y/m/d') }}" />
+            <button type="submit" class="btn btn-secondary btn-sm"><i class="fas fa-plus"></i></button>
+        </form>
+    </div>
 
 
     {{--  行動ログ一覧  --}}
     <table class="card text-left p-4 bg-dark log-scroll">
         <div id="log-inner">
-            @isset($current_day)
-            <tr class="mb-0 log-link">
-                <td>======== </td>
-                    <td>{{ $current_day->date }}</td>
-                <td> =========================</td>
-            </tr>
-            @endisset
-
             @empty($current_day)
-            <tr class="mb-0 log-link">
-                <td>======== </td>
-                <td>新しい日を登録しましょう</td>
-                <td> =========================</td>
-            </tr>
+                <tr>
+                    <td class="log-link">新しい日をはじめましょう</td>
+                </tr>
             @endempty
 
             @isset($logs)
             @foreach($logs as $log)
-            <tr class="mb-0 log-link">
-                <td>
-                    @isset($log->time)
-                    [{{ substr($log->time, 0, 5) }}]
-                    @endisset
-                </td>
+            <tr class="log-link border-bottom">
                 <td class="pl-2">
                     <a class="log-link" href="{{ route('log.edit', ['log' => $log]) }}">
                         {{ $log->log }}
                     </a>
+                </td>
+                <td>
+                    @isset($log->time)
+                    [{{ substr($log->time, 0, 5) }}]
+                    @endisset
                 </td>
             </tr>
             @endforeach
             @endisset
         </div>
     </table>
+</div>
 </section>
-
 
 @endsection
 
