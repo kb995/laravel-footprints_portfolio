@@ -1,3 +1,40 @@
-.log-link {
+@font-face {
+    font-family: "dot";
+    src: url(/font/PixelMplus12-Regular.ttf?9848197d6c91534133c521d787d275f3);
+  }
+
+  @font-face {
+    font-family: "dot_bold";
+    src: url(/font/PixelMplus12-Bold.ttf?d7c0eb6ee290ab71af65ae3bd8347c69);
+  }
+
+  .log-link {
     color: #fff;
-}
+    font-size: 1.2rem;
+    font-family: "dot";
+    letter-spacing: 0.4px;
+    line-height: 1.5;
+  }
+
+  .log-link:hover {
+    text-decoration: none;
+    color: #aaa;
+  }
+
+  .logo {
+    font-family: "dot_bold";
+  }
+
+  .log-title {
+    font-size: 3rem;
+    font-family: "dot_bold";
+  }
+
+  .log-scroll {
+    overflow-y: scroll;
+    height: 300px;
+  }
+
+  .log-inner {
+    height: 600px;
+  }
