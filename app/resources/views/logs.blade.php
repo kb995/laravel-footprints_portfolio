@@ -21,7 +21,7 @@
     @endif
 
     {{--  行動ログフォーム  --}}
-    <form action="{{ route('log.create', ['day' => $current_day]) }}" method="post" class="card text-center px-5 my-5 bg-light">
+    <form action="{{ route('log.create', ['day' => $current_day]) }}" method="post" class="card text-center px-5 my-5 bg-light shadow rounded">
         @csrf
         <div class="form-group p-3  mb-0 row">
             <input class="form-control col-2" type="time" name="time">
@@ -48,7 +48,7 @@
 
             <label for="" class="date-text">New Day</label>
             <input type="text" name="date" id="date" value="{{ date('Y/m/d') }}" />
-            <button type="submit" class="btn btn-secondary btn-sm"><i class="fas fa-plus"></i></button>
+            <button type="submit" class="btn btn-secondary btn-sm"><i class="fas fa-plus"></i></i></button>
         </form>
     </div>
 
