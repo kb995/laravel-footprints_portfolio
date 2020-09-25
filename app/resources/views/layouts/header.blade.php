@@ -1,9 +1,11 @@
 <header>
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg px-5">
+
         <a class="navbar-brand logo" href="#">FOOTPRINTS</a>
+
         @if(Auth::check())
         <ul class="navbar-nav ml-auto">
-            <li class="navbar-item navbar-text px-4">ようこそ, {{ Auth::user()->name }}さん</li>
+            <li class="navbar-item navbar-text px-4">{{ Auth::user()->name }}さんでログイン中</li>
             <li class="navbar-item"><button class="btn btn-link text-white" form="logout-form" id="logout">ログアウト</button></li>
         </ul>
 
