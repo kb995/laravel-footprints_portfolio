@@ -11,7 +11,11 @@ use App\Models\Day;
 
 class LogController extends Controller
 {
-    public function logs(int $day) {
+    public function logs(int $day = 0) {
+        if (empty($day)) {
+            return view('debug');
+
+        }
         $user = User::find(Auth::id());
         $current_day = $user->day()->where('id', $day)->first();
         $days = $user->days()->orderBy('date', 'desc')->get();

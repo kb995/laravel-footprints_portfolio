@@ -25,6 +25,7 @@ class DayRequest extends FormRequest
     {
         return [
             'date' => 'required'
+            // 'date' => 'required|unique.days.date'
         ];
     }
 }
