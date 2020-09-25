@@ -21,12 +21,15 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    // ログイン失敗の限度,操作不能時間
+    protected $maxAttempts = 5;
+    protected $decayMinutes = 1;
+
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    // ログイン後のリダイレクト
     protected $redirectTo = '/logs';
 
     /**
@@ -39,7 +42,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    // ログアウト後のリダイレクト
+    // ログアウト後の、リダイレクト
     protected function loggedOut(Request $request)
      {
          return redirect(route('login'));
