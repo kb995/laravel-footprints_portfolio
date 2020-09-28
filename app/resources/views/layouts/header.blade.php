@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg px-5">
 
-        <a class="navbar-brand logo" href="#">FOOTPRINTS</a>
+        <a class="navbar-brand logo" href="#">Trophy</a>
 
         @if(Auth::check())
         <ul class="navbar-nav ml-auto">

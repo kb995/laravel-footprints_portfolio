@@ -10,9 +10,8 @@ use App\User;
 
 class DayController extends Controller
 {
-    public function create(DayRequest $request) {
+    public function create(DayRequest $request, Day $current_day) {
         $user = User::find(Auth::id());
-        $current_day = new Day();
         $current_day->date = $request->date;
         $current_day->user_id = Auth::id();
         $days = $user->days()->orderBy('date', 'desc')->get();

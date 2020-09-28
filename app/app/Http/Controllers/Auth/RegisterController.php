@@ -29,7 +29,7 @@ class RegisterController extends Controller
      * @var string
      */
     // サインアップ後のリダイレクト
-    protected $redirectTo = '/logs';
+    protected $redirectTo = '/index';
 
     /**
      * Create a new controller instance.
