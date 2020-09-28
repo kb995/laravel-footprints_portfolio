@@ -27,6 +27,7 @@ class TrophyController extends Controller
 
     public function create(Day $day, Trophy $trophy, TrophyRequest $request) {
         $trophy->trophy = $request->trophy;
+        $trophy->text = $request->text;
         $trophy->time = $request->time;
         $trophy->date_id = $day->id;
         $trophy->save();
@@ -40,6 +41,7 @@ class TrophyController extends Controller
 
     public function update(Trophy $trophy, TrophyRequest $request) {
         $trophy->trophy = $request->trophy;
+        $trophy->text = $request->text;
         $trophy->time = $request->time;
         $trophy->save();
 

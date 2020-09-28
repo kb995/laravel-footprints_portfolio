@@ -6,7 +6,7 @@
 
 @section('content')
 <section class="container">
-    <div class="w-50 mx-auto">
+    <div class="content mx-auto">
         <h1 class="text-center my-5">Trophy</h1>
 
         {{--  エラー表示  --}}
@@ -24,8 +24,14 @@
         <form action="{{ route('trophy.create', ['day' => $day]) }}" method="post" class="card text-center px-5 my-5 bg-light shadow rounded">
             @csrf
             <div class="form-group mb-0 row p-3">
-                <input class="form-control col-7" type="text" name="trophy" placeholder="今日のトロフィーを記録しましょう">
-                <input class="form-control col-3" type="time" name="time">
+                <select name="trophy" class="form-control col-2" id="">
+                    <option value="1">なし</option>
+                    <option value="2"><i class="fas fa-trophy"></i></option>
+                    <option value="3"><i class="fas fa-trophy"></i></option>
+                    <option value="4"><i class="fas fa-trophy"></i></option>
+                </select>
+                <input class="form-control col-6" type="text" name="text" placeholder="今日のトロフィーを記録しましょう">
+                <input class="form-control col-2" type="time" name="time">
                 <button type="submit" class="btn btn-success col-2">追加</button>
             </div>
         </form>
@@ -61,7 +67,7 @@
                 <tr class="trophy-link">
                     <td class="pl-2">
                         <a class="trophy-link" href="{{ route('trophy.edit', ['trophy' => $trophy]) }}">
-                            ▲ {{ $trophy->trophy }}
+                            <i class="fas fa-trophy"></i> : {{ $trophy->text }}
                         </a>
                     </td>
                     <td>

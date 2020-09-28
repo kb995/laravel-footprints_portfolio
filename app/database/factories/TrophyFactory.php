@@ -7,7 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Trophy::class, function (Faker $faker) {
     return [
-        'trophy' => 'texttexttexttexttexttexttexttext',
+        'text' => 'texttexttexttexttexttexttexttext',
+        'time' =>  now(),
         'date_id' => 1,
     ];
 });
