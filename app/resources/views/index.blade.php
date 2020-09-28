@@ -39,7 +39,7 @@
                 @isset($days)
                 <select onChange="location.href=value;" class="mr-5">
                     @foreach($days as $day)
-                        <option value="{{ route('trophies', ['day' => $day]) }}">
+                        <option value="{{ route('index', ['day' => $day]) }}">
                             {{ $day->date }}
                         </option>
                     @endforeach

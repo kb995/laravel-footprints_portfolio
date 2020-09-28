@@ -25,37 +25,29 @@ class TrophyController extends Controller
         return view('index', compact('days', 'day', 'trophies'));
     }
 
-    // DI -> Day $current_day, Trophy $trophy でテスト
-    public function create(int $day, TrophyRequest $request) {
-        $trophy = new Trophy();
+    public function create(Day $day, Trophy $trophy, TrophyRequest $request) {
         $trophy->trophy = $request->trophy;
         $trophy->time = $request->time;
-        $trophy->date_id = $day;
+        $trophy->date_id = $day->id;
         $trophy->save();
 
-        return redirect()->route('trophies', ['day' => $day]);
+        return redirect()->route('index', ['day' => $day]);
     }
 
-    // DI -> Trophy $trophy でテスト
-    public function edit(int $trophy) {
-        $trophy = Trophy::find($trophy);
+    public function edit(Trophy $trophy) {
         return view('edit', compact('trophy'));
     }
 
-    public function update(int $trophy, TrophyRequest $request) {
-        $trophy = Trophy::find($trophy);
+    public function update(Trophy $trophy, TrophyRequest $request) {
         $trophy->trophy = $request->trophy;
         $trophy->time = $request->time;
         $trophy->save();
 
-        return redirect()->route('trophies', ['day' => $trophy->date_id]);
+        return redirect('/');
     }
 
-    public function destroy(int $trophy) {
-        $trophy = Trophy::find($trophy);
+    public function destroy(Trophy $trophy) {
         $trophy->delete();
-
-        return redirect()->route('trophies', ['day' => $trophy->date_id]);
+        return redirect()->route('index');
     }
-
 }
