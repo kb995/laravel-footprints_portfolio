@@ -17009,6 +17009,10 @@ readers do not read off random characters that represent icons */
   src: url(/font/PixelMplus12-Bold.ttf?d7c0eb6ee290ab71af65ae3bd8347c69);
 }
 
+.content {
+  width: 70%;
+}
+
 .trophy-link {
   color: #fff;
   font-size: 1.2rem;
@@ -17036,6 +17040,10 @@ readers do not read off random characters that represent icons */
 }
 
 .date-text {
-  font-size: 1rem;
+  font-size: 1.2rem;
+}
+
+.trophy {
+  color: #111;
 }
 

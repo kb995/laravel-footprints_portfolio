@@ -10,13 +10,12 @@ use App\User;
 
 class DayController extends Controller
 {
-    public function create(DayRequest $request, Day $current_day) {
+    public function create(DayRequest $request, Day $day) {
         $user = User::find(Auth::id());
-        $current_day->date = $request->date;
-        $current_day->user_id = Auth::id();
+        $day->date = $request->date;
+        $day->user_id = Auth::id();
         $days = $user->days()->orderBy('date', 'desc')->get();
-        $user->day()->save($current_day);
-
-        return view('logs', compact('days', 'current_day'));
+        $user->day()->save($day);
+        return view('index', compact('days', 'day'));
     }
 }
