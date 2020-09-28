@@ -1,19 +1,19 @@
 <?php
 Route::group(['middleware' => 'auth'], function() {
 
-    // Log 一覧 (TOP)
-    Route::get('/logs/{day?}', 'LogController@logs')->name('logs');
-    // Log 登録
-    Route::post('/log/create/{day}', 'LogController@create')->name('log.create');
+    // Trophy 一覧 (TOP)
+    Route::get('/', 'TrophyController@index')->name('index');
+    // Trophy 登録
+    Route::post('/trophy/create/{day}', 'TrophyController@create')->name('trophy.create');
     // Day 登録
     Route::post('/day/create', 'DayController@create')->name('day.create');
 
-    // Log 編集
-    Route::get('/log/edit/{log}','LogController@edit')->name('log.edit');
-    Route::post('/log/update/{log}','LogController@update')->name('log.update');
+    // Trophy 編集
+    Route::get('/trophy/edit/{trophy}','TrophyController@edit')->name('trophy.edit');
+    Route::post('/trophy/update/{trophy}','TrophyController@update')->name('trophy.update');
 
-    // Log 削除
-    Route::post('/log/destroy/{log}','LogController@destroy')->name('log.destroy');
+    // Trophy 削除
+    Route::post('/trophy/destroy/{trophy}','TrophyController@destroy')->name('trophy.destroy');
 });
 
 
