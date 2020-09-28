@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container w-50">
-    <h1 class="text-center my-5 log-title">Edit</h1>
+    <h1 class="text-center my-5 trophy-title">Edit</h1>
     {{--  エラー表示  --}}
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -14,18 +14,18 @@
     </div>
     @endif
 
-    <form action="{{ route('log.update', ['log' => $log]) }}" method="post" class="card text-center px-5 bg-light">
+    <form action="{{ route('trophy.update', ['trophy' => $trophy]) }}" method="post" class="card text-center px-5 bg-light">
         @csrf
         <div class="form-group p-3  mb-0 row">
             <input class="form-control col-2" type="time" name="time">
-            <input class="form-control col-8" type="text" name="log" value="{{ $log->log }}">
+            <input class="form-control col-8" type="text" name="trophy" value="{{ $trophy->trophy }}">
             <button class="btn btn-primary col-2" type="submit">編集</button>
         </div>
     </form>
-    <form action="{{ route('log.destroy', ['log' => $log]) }}" method="post" id="delete_{{ $log }}">
+    <form action="{{ route('trophy.destroy', ['trophy' => $trophy]) }}" method="post" id="delete_{{ $trophy }}">
         @csrf
         <div class="text-right">
-            <a class="text-danger" href="#" data-id="{{ $log }}" onclick="deletePost(this);">このログを削除する</a>
+            <a class="text-danger" href="#" data-id="{{ $trophy }}" onclick="deletePost(this);">このログを削除する</a>
         </div>
     </form>
     </div>

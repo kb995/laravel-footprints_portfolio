@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Log;
+use App\Models\Trophy;
 
-class LogsTableSeeder extends Seeder
+class TrophiesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class LogsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Log::class, 10)->create();
+        factory(Trophy::class, 10)->create();
     }
 }

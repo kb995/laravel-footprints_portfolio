@@ -17009,14 +17009,14 @@ readers do not read off random characters that represent icons */
   src: url(/font/PixelMplus12-Bold.ttf?d7c0eb6ee290ab71af65ae3bd8347c69);
 }
 
-.log-link {
+.trophy-link {
   color: #fff;
   font-size: 1.2rem;
   letter-spacing: 0.4px;
   line-height: 1.8;
 }
 
-.log-link:hover {
+.trophy-link:hover {
   text-decoration: none;
   color: #aaa;
 }
@@ -17025,12 +17025,12 @@ readers do not read off random characters that represent icons */
   font-family: "dot_bold";
 }
 
-.log-title {
+.trophy-title {
   font-size: 3rem;
   font-family: "dot_bold";
 }
 
-.log-scroll {
+.trophy-scroll {
   overflow-y: scroll;
   height: 300px;
 }

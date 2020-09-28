@@ -2,12 +2,12 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\Log;
+use App\Models\Trophy;
 use Faker\Generator as Faker;
 
-$factory->define(Log::class, function (Faker $faker) {
+$factory->define(Trophy::class, function (Faker $faker) {
     return [
-        'log' => 'texttexttexttexttexttexttexttext',
+        'trophy' => 'texttexttexttexttexttexttexttext',
         'date_id' => 1,
     ];
 });

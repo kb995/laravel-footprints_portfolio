@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LogRequest extends FormRequest
+class TrophyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class LogRequest extends FormRequest
     public function rules()
     {
         return [
-            'log' => 'required|string|max:33'
+            'trophy' => 'required|string|max:33'
         ];
     }
 }
