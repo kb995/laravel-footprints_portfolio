@@ -3,6 +3,8 @@ Route::group(['middleware' => 'auth'], function() {
 
     // Trophy 一覧 (TOP)
     Route::get('/', 'TrophyController@index')->name('index');
+    // Trophy 一覧 （指定）
+    Route::get('/trophies/{day}', 'TrophyController@trophies')->name('trophies');
     // Trophy 登録
     Route::post('/trophy/create/{day}', 'TrophyController@create')->name('trophy.create');
     // Day 登録
