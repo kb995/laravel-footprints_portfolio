@@ -13,11 +13,22 @@
       width: 70%;
   }
 
-  .trophy-link {
+  .trophy-link_gold {
     color: #fff;
-    font-size: 1.2rem;
-    // font-family: "dot";
-    letter-spacing: 0.4px;
+    font-size: 1.8rem;
+    letter-spacing: 0.6px;
+    line-height: 1.8;
+  }
+  .trophy-link_silver {
+    color: #fff;
+    font-size: 1.4rem;
+    letter-spacing: 0.6px;
+    line-height: 1.8;
+  }
+  .trophy-link_copper {
+    color: #fff;
+    font-size: 1.0rem;
+    letter-spacing: 0.6px;
     line-height: 1.8;
   }
 
@@ -44,6 +55,17 @@
     font-size: 1.2rem;
   }
 
-  .trophy {
-      color: #111;
-  }
+.gold {
+    color: #e6b422;
+    font-size: 1.8rem;
+    line-height: 1.6;
+}
+.silver {
+    color: #c0c0c0;
+    font-size: 1.5rem;
+    line-height: 1.6;
+}
+.copper {
+color: #815a2b;
+font-size: 1.2rem;
+}
