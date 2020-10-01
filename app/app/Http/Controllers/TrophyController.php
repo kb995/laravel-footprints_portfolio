@@ -20,8 +20,23 @@ class TrophyController extends Controller
             return view('welcome');
         }
 
-        $trophies = $day->trophies()->orderBy('time', 'asc')->get();
+        $trophies['gold'] = $day->gold_trophies()->orderBy('time', 'asc')->get();
+        $trophies['silver'] = $day->silver_trophies()->orderBy('time', 'asc')->get();
+        $trophies['copper'] = $day->copper_trophies()->orderBy('time', 'asc')->get();
 
+        return view('index', compact('days', 'day', 'trophies'));
+    }
+
+    public function trophies(Day $day) {
+        $user = User::find(Auth::id());
+        $day = $user->day()->where('id', $day->id)->first();
+        $days = $user->days()->orderBy('date', 'desc')->get();
+
+        if($day === null) {
+            return view('welcome');
+        }
+
+        $trophies = $day->trophies()->orderBy('time', 'asc')->get();
         return view('index', compact('days', 'day', 'trophies'));
     }
 
