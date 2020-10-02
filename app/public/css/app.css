@@ -17013,30 +17013,31 @@ readers do not read off random characters that represent icons */
   width: 70%;
 }
 
-.trophy-link_gold {
+.trophy-text_gold {
   color: #fff;
   font-size: 1.8rem;
   letter-spacing: 0.6px;
   line-height: 1.8;
 }
 
-.trophy-link_silver {
-  color: #fff;
-  font-size: 1.4rem;
-  letter-spacing: 0.6px;
-  line-height: 1.8;
-}
-
-.trophy-link_copper {
-  color: #fff;
-  font-size: 1rem;
-  letter-spacing: 0.6px;
-  line-height: 1.8;
-}
-
-.trophy-link:hover {
+.trophy-text_gold:hover {
+  color: #bbb;
   text-decoration: none;
-  color: #aaa;
+  opacity: 0.8;
+}
+
+.trophy-text_silver {
+  color: #fff;
+  font-size: 1.3rem;
+  letter-spacing: 0.6px;
+  line-height: 1.8;
+}
+
+.trophy-text_copper {
+  color: #fff;
+  font-size: 1.1rem;
+  letter-spacing: 0.6px;
+  line-height: 1.8;
 }
 
 .logo {
@@ -17053,8 +17054,11 @@ readers do not read off random characters that represent icons */
   height: 300px;
 }
 
-.date-text {
-  font-size: 1.2rem;
+.time {
+  font-size: 0.8rem;
+  text-align: center;
+  padding-right: 3rem;
+  color: #fff;
 }
 
 .gold {
@@ -17071,6 +17075,6 @@ readers do not read off random characters that represent icons */
 
 .copper {
   color: #815a2b;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
