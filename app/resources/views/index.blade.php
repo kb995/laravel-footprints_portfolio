@@ -72,32 +72,30 @@
                 @isset($trophies)
                 {{--  ゴールド  --}}
                 @foreach($trophies['gold'] as $trophy)
-                <tr>
-                    <td class="pl-2">
-                        <a class="trophy-link_gold" href="{{ route('trophy.edit', ['trophy' => $trophy]) }}">
-                            <i class="fas fa-trophy gold pr-2"></i>  {{ $trophy->text }}
-                        </a>
-                    </td>
-                    <td class="pl-3">
-                        @isset($trophy->time)
-                        <small class="trophy-time">
-                            [{{ substr($trophy->time, 0, 5) }}]
-                        </small>
-                        @endisset
-                    </td>
-                </tr>
+                    <tr class="d-flex justify-content-between">
+                        <td class="pl-2">
+                            <a class="trophy-text_gold" href="{{ route('trophy.edit', ['trophy' => $trophy]) }}">
+                                <i class="fas fa-trophy gold pr-2"></i>  {{ $trophy->text }}
+                            </a>
+                        </td>
+                        <td class="time">
+                            @isset($trophy->time)
+                            /  [{{ substr($trophy->time, 0, 5) }}]
+                            @endisset
+                        </td>
+                    </tr>
                 @endforeach
                 {{--  シルバー  --}}
                 @foreach($trophies['silver'] as $trophy)
                 <tr>
                     <td class="pl-2">
-                        <a class="trophy-link_silver" href="{{ route('trophy.edit', ['trophy' => $trophy]) }}">
+                        <a class="trophy-text_silver" href="{{ route('trophy.edit', ['trophy' => $trophy]) }}">
                             <i class="fas fa-trophy silver pr-2"></i>  {{ $trophy->text }}
                         </a>
                     </td>
                     <td class="pl-3">
                         @isset($trophy->time)
-                        <small class="trophy-time">
+                        <small class="time">
                             [{{ substr($trophy->time, 0, 5) }}]
                         </small>
                         @endisset
@@ -108,13 +106,13 @@
                 @foreach($trophies['copper'] as $trophy)
                 <tr>
                     <td class="pl-2">
-                        <a class="trophy-link_copper" href="{{ route('trophy.edit', ['trophy' => $trophy]) }}">
+                        <a class="trophy-text_copper" href="{{ route('trophy.edit', ['trophy' => $trophy]) }}">
                             <i class="fas fa-trophy copper pr-2"></i>  {{ $trophy->text }}
                         </a>
                     </td>
                     <td class="pl-3">
                         @isset($trophy->time)
-                        <small class="trophy-time">
+                        <small class="time">
                             [{{ substr($trophy->time, 0, 5) }}]
                         </small>
                         @endisset
