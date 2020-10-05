@@ -36,35 +36,40 @@ class TrophyController extends Controller
             return view('welcome');
         }
 
-        $trophies = $day->trophies()->orderBy('time', 'asc')->get();
+        $trophies['gold'] = $day->gold_trophies()->orderBy('time', 'asc')->get();
+        $trophies['silver'] = $day->silver_trophies()->orderBy('time', 'asc')->get();
+        $trophies['copper'] = $day->copper_trophies()->orderBy('time', 'asc')->get();
+
         return view('index', compact('days', 'day', 'trophies'));
     }
 
-    public function create(Day $day, Trophy $trophy, TrophyRequest $request) {
+    public function store(Day $day, Trophy $trophy, TrophyRequest $request) {
         $trophy->trophy = $request->trophy;
         $trophy->text = $request->text;
         $trophy->time = $request->time;
         $trophy->date_id = $day->id;
         $trophy->save();
 
-        return redirect()->route('index', ['day' => $day]);
+        return back();
     }
 
     public function edit(Trophy $trophy) {
-        return view('edit', compact('trophy'));
+        $day = Day::find($trophy->date_id);
+        return view('edit', compact('day', 'trophy'));
     }
 
     public function update(Trophy $trophy, TrophyRequest $request) {
         $trophy->trophy = $request->trophy;
         $trophy->text = $request->text;
         $trophy->time = $request->time;
+        $day = Day::find($trophy->date_id);
         $trophy->save();
 
-        return redirect('/');
+        return redirect()->route('trophies', ['day' => $day]);
     }
 
     public function destroy(Trophy $trophy) {
         $trophy->delete();
-        return redirect()->route('index');
+        return back();
     }
 }
