@@ -12,6 +12,6 @@ class DaysTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Day::class, 3)->create();
+        factory(Day::class, 1)->create();
     }
 }

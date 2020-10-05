@@ -15,7 +15,7 @@ class CreateTrophiesTable extends Migration
     {
         Schema::create('trophies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('trophy')->default(1);
+            $table->integer('trophy')->default(0);
             $table->text('text');
             $table->bigInteger('date_id')->unsigned();
             $table->foreign('date_id')->references('id')->on('days');
