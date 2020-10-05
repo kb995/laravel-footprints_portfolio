@@ -53,9 +53,8 @@
   }
 
   .time {
-    font-size: .8rem;
+    font-size: 1rem;
     text-align: center;
-    padding-right: 3rem;
     color: #fff;
   }
 
@@ -72,4 +71,9 @@
 .copper {
 color: #815a2b;
 font-size: 1.4rem;
+}
+
+hr {
+    width: 100%;
+    color: #ddd;
 }

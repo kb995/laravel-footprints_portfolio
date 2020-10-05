@@ -17055,9 +17055,8 @@ readers do not read off random characters that represent icons */
 }
 
 .time {
-  font-size: 0.8rem;
+  font-size: 1rem;
   text-align: center;
-  padding-right: 3rem;
   color: #fff;
 }
 
@@ -17076,5 +17075,10 @@ readers do not read off random characters that represent icons */
 .copper {
   color: #815a2b;
   font-size: 1.4rem;
+}
+
+hr {
+  width: 100%;
+  color: #ddd;
 }
 

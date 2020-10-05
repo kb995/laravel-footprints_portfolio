@@ -19,16 +19,17 @@
             </ul>
         </div>
         @endif
+
         {{--  トロフィーフォーム  --}}
-        <form action="{{ route('trophy.create', ['day' => $day]) }}" method="post" class="card text-center px-5 my-5 bg-light shadow rounded">
+        <form action="{{ route('trophies.store', ['day' => $day]) }}" method="post" class="card text-center px-5 my-5 bg-light shadow rounded">
             @csrf
             <div class="form-group mb-0 row p-3" >
                 <select name="trophy" class="form-control col-2">
                     <option value="" hidden>トロフィー</option>
-                    <option value="1">なし</option>
-                    <option value="2" class="gold">Gold</option>
-                    <option value="3" class="silver">Silver</option>
-                    <option value="4" class="copper">Copper</option>
+                    <option value="0">なし</option>
+                    <option value="1" class="gold">Gold</option>
+                    <option value="2" class="silver">Silver</option>
+                    <option value="3" class="copper">Copper</option>
                 </select>
                 <input class="form-control col-6" type="text" name="text" placeholder="今日のトロフィーを記録しましょう">
                 <input class="form-control col-2" type="time" name="time">
@@ -36,12 +37,10 @@
             </div>
         </form>
 
-
-
         {{--  日付  --}}
         <div class="pl-4 border">
-            <form action="{{ route('day.create') }}" method="post" class="m-3 d-flex justify-content-end">
-                <span class="mr-auto my-auto h4">{{$day->date}}</span>
+            <form action="{{ route('days.store') }}" method="post" class="m-3 d-flex justify-content-end">
+                <span class="mr-auto my-auto h4">{{ $day->formatted_date }}</span>
                 @csrf
                 <label for="" class="date-text pr-3 my-auto">Days</label>
                 @isset($days)
@@ -64,8 +63,6 @@
             </form>
         </div>
 
-
-
         {{--  トロフィー一覧  --}}
         <table class="card text-left p-4 pl-5 bg-dark trophy-scroll">
             <div id="trophy-inner">
@@ -74,54 +71,56 @@
                 @foreach($trophies['gold'] as $trophy)
                     <tr class="d-flex justify-content-between">
                         <td class="pl-2">
-                            <a class="trophy-text_gold" href="{{ route('trophy.edit', ['trophy' => $trophy]) }}">
+                            <a class="trophy-text_gold" href="{{ route('trophies.edit', ['trophy' => $trophy]) }}">
                                 <i class="fas fa-trophy gold pr-2"></i>  {{ $trophy->text }}
                             </a>
-                        </td>
-                        <td class="time">
-                            @isset($trophy->time)
-                            /  [{{ substr($trophy->time, 0, 5) }}]
-                            @endisset
+                            <span class="time pl-2">
+                                @isset($trophy->time)
+                                 [{{ substr($trophy->time, 0, 5) }}]
+                                @endisset
+                            </span>
                         </td>
                     </tr>
+                    @if ($loop->last)
+                        <tr><td class="w-100 py-2"></td></tr>
+                    @endif
+
                 @endforeach
                 {{--  シルバー  --}}
                 @foreach($trophies['silver'] as $trophy)
                 <tr>
                     <td class="pl-2">
-                        <a class="trophy-text_silver" href="{{ route('trophy.edit', ['trophy' => $trophy]) }}">
+                        <a class="trophy-text_silver" href="{{ route('trophies.edit', ['trophy' => $trophy]) }}">
                             <i class="fas fa-trophy silver pr-2"></i>  {{ $trophy->text }}
                         </a>
-                    </td>
-                    <td class="pl-3">
-                        @isset($trophy->time)
-                        <small class="time">
-                            [{{ substr($trophy->time, 0, 5) }}]
-                        </small>
-                        @endisset
+                        <span class="time pl-2">
+                            @isset($trophy->time)
+                             [{{ substr($trophy->time, 0, 5) }}]
+                            @endisset
+                        </span>
                     </td>
                 </tr>
+                @if ($loop->last)
+                    <tr><td class="w-100 py-2"></td></tr>
+                @endif
+
                 @endforeach
                 {{--  カッパー  --}}
                 @foreach($trophies['copper'] as $trophy)
                 <tr>
                     <td class="pl-2">
-                        <a class="trophy-text_copper" href="{{ route('trophy.edit', ['trophy' => $trophy]) }}">
+                        <a class="trophy-text_copper" href="{{ route('trophies.edit', ['trophy' => $trophy]) }}">
                             <i class="fas fa-trophy copper pr-2"></i>  {{ $trophy->text }}
                         </a>
-                    </td>
-                    <td class="pl-3">
-                        @isset($trophy->time)
-                        <small class="time">
-                            [{{ substr($trophy->time, 0, 5) }}]
-                        </small>
-                        @endisset
+                        <span class="time pl-2">
+                            @isset($trophy->time)
+                             [{{ substr($trophy->time, 0, 5) }}]
+                            @endisset
+                        </span>
                     </td>
                 </tr>
                 @endforeach
                 @endisset
-
-
             </div>
         </table>
     </div>

@@ -1,21 +1,22 @@
 <?php
 Route::group(['middleware' => 'auth'], function() {
 
-    // Trophy 一覧 (TOP)
+    // Trophy
+    // 一覧
     Route::get('/', 'TrophyController@index')->name('index');
-    // Trophy 一覧 （指定）
+    // 一覧（指定）
     Route::get('/trophies/{day}', 'TrophyController@trophies')->name('trophies');
-    // Trophy 登録
-    Route::post('/trophy/create/{day}', 'TrophyController@create')->name('trophy.create');
-    // Day 登録
-    Route::post('/day/create', 'DayController@create')->name('day.create');
+    // 登録
+    Route::post('/trophies/{day}', 'TrophyController@store')->name('trophies.store');
+    // 編集
+    Route::get('/trophies/{trophy}/edit','TrophyController@edit')->name('trophies.edit');
+    Route::post('/trophies/{trophy}/update','TrophyController@update')->name('trophies.update');
+    // 削除
+    Route::post('/trophies/{trophy}','TrophyController@destroy')->name('trophies.destroy');
 
-    // Trophy 編集
-    Route::get('/trophy/edit/{trophy}','TrophyController@edit')->name('trophy.edit');
-    Route::post('/trophy/update/{trophy}','TrophyController@update')->name('trophy.update');
-
-    // Trophy 削除
-    Route::post('/trophy/destroy/{trophy}','TrophyController@destroy')->name('trophy.destroy');
+    // Day
+    // 登録
+    Route::post('/days', 'DayController@store')->name('days.store');
 });
 
 
