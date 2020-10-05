@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Day::class, function (Faker $faker) {
     return [
-        'date' => date("Y-m-d", strtotime(rand(1, 10) . "day")),
+        'date' => date("Y-m-d"),
         'user_id' => 1,
     ];
 });
