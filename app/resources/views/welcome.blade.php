@@ -2,12 +2,13 @@
 
 @section('styles')
     @include('libs.flatpickr.styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 @endsection
 
 @section('content')
 <section class="container">
     <div class="w-50 mx-auto">
-    <h1 class="text-center my-5">Welcome</h1>
+    <h1 class="text-center my-5">Wellcome</h1>
 
     {{--  エラー表示  --}}
     @if ($errors->any())
@@ -22,7 +23,7 @@
 
     {{--  日付移動 /　作成  --}}
     <div class="pl-4 border">
-        <form action="{{ route('day.create') }}" method="post" class="mt-2 text-center py-2">
+        <form action="{{ route('days.store') }}" method="post" class="mt-2 text-center py-2">
             @csrf
             <label for="" class="date-text">New Day</label>
             <input type="text" name="date" id="date" value="{{ date('Y/m/d') }}" />
@@ -45,6 +46,7 @@
 @endsection
 
 @section('scripts')
+    {{--  flatpickr  --}}
     <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ja.js"></script>
     <script>
@@ -54,4 +56,21 @@
         minDate: new Date()
     });
     </script>
+
+    {{--  toaster  --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        @if (session('flash_message'))
+            $(function () {
+                    toastr.success('{{ session('flash_message') }}');
+            });
+        @endif
+        @if (session('msg_danger'))
+            $(function () {
+                toastr.danger('{{ session('msg_danger') }}');
+            });
+        @endif
+    </script>
+
 @endsection

@@ -11,6 +11,12 @@ use App\Models\Day;
 
 class TrophyController extends Controller
 {
+
+    // public function __construct()
+    // {
+    //     $this->authorizeResource(Trophy::class, 'trophy');
+    // }
+
     public function index() {
         $user = User::find(Auth::id());
         $day = $user->day()->first();
@@ -50,11 +56,13 @@ class TrophyController extends Controller
         $trophy->date_id = $day->id;
         $trophy->save();
 
+        session()->flash('flash_message', 'トロフィーを追加しました');
         return back();
     }
 
     public function edit(Trophy $trophy) {
         $day = Day::find($trophy->date_id);
+
         return view('edit', compact('day', 'trophy'));
     }
 
@@ -65,11 +73,16 @@ class TrophyController extends Controller
         $day = Day::find($trophy->date_id);
         $trophy->save();
 
+        session()->flash('flash_message', 'トロフィーを更新しました');
         return redirect()->route('trophies', ['day' => $day]);
     }
 
     public function destroy(Trophy $trophy) {
         $trophy->delete();
-        return back();
+        $day = Day::find($trophy->date_id);
+
+        session()->flash('flash_message', 'トロフィーを削除しました');
+        return redirect()->route('trophies', ['day' => $day]);
+
     }
 }

@@ -24,7 +24,6 @@ class Day extends Model
 
     public function getFormattedDateAttribute()
     {
-        return Carbon::createFromFormat('Y-m-d', $this->attributes['date'])
-            ->format('Y/m/d');
+        return Carbon::createFromFormat('Y-m-d', $this->attributes['date'])->format('Y/m/d');
     }
 }
