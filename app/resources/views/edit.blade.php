@@ -44,10 +44,10 @@
         </div>
     </form>
 
-    <form action="{{ route('trophies.destroy', ['trophy' => $trophy]) }}" method="post" id="delete_{{ $trophy }}">
+    <form action="{{ route('trophies.destroy', ['trophy' => $trophy]) }}" method="post" id="delete_{{ $trophy->id }}">
         @csrf
-        <div class="text-right mt-3">
-            <a class="text-danger" href="" data-id="{{ $trophy }}" onclick="deletePost(this);"><i class="fas fa-trash-alt pr-1"></i>このトロフィーを削除する</a>
+        <div class="text-right mt-2">
+            <a class="text-danger" data-id="{{ $trophy->id }}" onclick="deletePost(this);"><i class="fas fa-trash-alt pr-1"></i>このトロフィーを削除する</a>
         </div>
     </form>
     </div>

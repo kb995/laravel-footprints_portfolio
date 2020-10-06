@@ -56,13 +56,13 @@ class TrophyController extends Controller
         $trophy->date_id = $day->id;
         $trophy->save();
 
+        session()->flash('flash_message', 'トロフィーを追加しました');
         return back();
     }
 
     public function edit(Trophy $trophy) {
         $day = Day::find($trophy->date_id);
-        // $aaa = $trophy->day()->first();
-        // dd($aaa);
+
         return view('edit', compact('day', 'trophy'));
     }
 
@@ -73,12 +73,15 @@ class TrophyController extends Controller
         $day = Day::find($trophy->date_id);
         $trophy->save();
 
+        session()->flash('flash_message', 'トロフィーを更新しました');
         return redirect()->route('trophies', ['day' => $day]);
     }
 
     public function destroy(Trophy $trophy) {
         $trophy->delete();
         $day = Day::find($trophy->date_id);
+
+        session()->flash('flash_message', 'トロフィーを削除しました');
         return redirect()->route('trophies', ['day' => $day]);
 
     }

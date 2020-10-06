@@ -2,9 +2,11 @@
 
 @section('styles')
     @include('libs.flatpickr.styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 @endsection
 
 @section('content')
+
 <section class="container">
     <div class="content mx-auto">
         <h1 class="text-center my-5">Trophy</h1>
@@ -136,6 +138,7 @@
 @endsection
 
 @section('scripts')
+    {{--  flatpickr  --}}
     <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ja.js"></script>
     <script>
@@ -144,5 +147,21 @@
         dateFormat: "Y/m/d",
         minDate: new Date()
     });
+    </script>
+
+    {{--  toaster  --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        @if (session('flash_message'))
+            $(function () {
+                    toastr.success('{{ session('flash_message') }}');
+            });
+        @endif
+        @if (session('msg_danger'))
+            $(function () {
+                toastr.danger('{{ session('msg_danger') }}');
+            });
+        @endif
     </script>
 @endsection
