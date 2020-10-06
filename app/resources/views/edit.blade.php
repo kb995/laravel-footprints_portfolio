@@ -40,14 +40,14 @@
             </select>
             <input class="form-control col-6" type="text" name="text" placeholder="今日のトロフィーを記録しましょう" value="{{ $trophy->text ?? old('text') }}">
             <input class="form-control col-2" type="time" name="time" value="{{ $trophy->time ?? old('time') }}">
-            <button type="submit" class="btn btn-success col-2">編集</button>
+            <button type="submit" class="btn btn-success col-2">更新</button></button>
         </div>
     </form>
 
     <form action="{{ route('trophies.destroy', ['trophy' => $trophy]) }}" method="post" id="delete_{{ $trophy }}">
         @csrf
         <div class="text-right mt-3">
-            <a class="text-danger" href="#" data-id="{{ $trophy }}" onclick="deletePost(this);"><i class="fas fa-trash-alt pr-1"></i>このトロフィーを削除する</a>
+            <a class="text-danger" href="" data-id="{{ $trophy }}" onclick="deletePost(this);"><i class="fas fa-trash-alt pr-1"></i>このトロフィーを削除する</a>
         </div>
     </form>
     </div>

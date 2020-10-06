@@ -12,7 +12,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/trophies/{trophy}/edit','TrophyController@edit')->name('trophies.edit');
     Route::post('/trophies/{trophy}/update','TrophyController@update')->name('trophies.update');
     // 削除
-    Route::post('/trophies/{trophy}','TrophyController@destroy')->name('trophies.destroy');
+    Route::post('/trophies/{trophy}/destroy','TrophyController@destroy')->name('trophies.destroy');
 
     // Day
     // 登録

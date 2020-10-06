@@ -11,6 +11,12 @@ use App\Models\Day;
 
 class TrophyController extends Controller
 {
+
+    // public function __construct()
+    // {
+    //     $this->authorizeResource(Trophy::class, 'trophy');
+    // }
+
     public function index() {
         $user = User::find(Auth::id());
         $day = $user->day()->first();
@@ -55,6 +61,8 @@ class TrophyController extends Controller
 
     public function edit(Trophy $trophy) {
         $day = Day::find($trophy->date_id);
+        // $aaa = $trophy->day()->first();
+        // dd($aaa);
         return view('edit', compact('day', 'trophy'));
     }
 
@@ -70,6 +78,8 @@ class TrophyController extends Controller
 
     public function destroy(Trophy $trophy) {
         $trophy->delete();
-        return back();
+        $day = Day::find($trophy->date_id);
+        return redirect()->route('trophies', ['day' => $day]);
+
     }
 }
