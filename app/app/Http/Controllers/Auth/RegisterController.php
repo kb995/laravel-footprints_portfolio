@@ -30,7 +30,7 @@ class RegisterController extends Controller
      */
     // サインアップ後のリダイレクト
     protected function redirectTo() {
-        session()->flash('flash_message', 'サインインしました');
+        session()->flash('flash_message', 'サインインに成功しました');
         return '/';
     }
     /**
