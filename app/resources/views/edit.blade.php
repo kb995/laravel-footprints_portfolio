@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container w-50">
-    <h1 class="text-center my-5 trophy-title">Edit</h1>
+    <h1 class="text-center my-5 heading">Edit</h1>
 
     {{--  エラー表示  --}}
     @if ($errors->any())
@@ -15,20 +15,11 @@
     </div>
     @endif
 
-    {{--  <form action="{{ route('trophies.update', ['trophy' => $trophy]) }}" method="post" class="card text-center px-5 bg-light">
-        @csrf
-        <div class="form-group p-3  mb-0 row">
-            <input class="form-control col-2" type="time" name="time">
-            <input class="form-control col-8" type="text" name="trophy" value="{{ $trophy->trophy }}">
-            <button class="btn btn-primary col-2" type="submit">編集</button>
-        </div>
-    </form>  --}}
-
     {{--  トロフィーフォーム  --}}
     <form action="{{ route('trophies.update', ['trophy' => $trophy]) }}" method="post" class="card text-center bg-light shadow rounded">
         @csrf
         <div class="card-header p-2 text-left">
-            <span class="pl-3">{{ $day->formatted_date }}</span>
+            <span class="pl-3 heading">{{ $day->formatted_date }}</span>
         </div>
         <div class="form-group mb-0 row p-4 card-body" >
             <select name="trophy" class="form-control col-2">

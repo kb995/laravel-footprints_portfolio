@@ -1,13 +1,19 @@
-@font-face {
-    font-family: "dot";
-    src: url(/font/PixelMplus12-Regular.ttf?9848197d6c91534133c521d787d275f3);
-  }
 
-  @font-face {
-    font-family: "dot_bold";
-    src: url(/font/PixelMplus12-Bold.ttf?d7c0eb6ee290ab71af65ae3bd8347c69);
-  }
+    body {
+        font-family:"Helvetica Neue",
+                     Arial,
+                    "Hiragino Kaku Gothic ProN",
+                    "Hiragino Sans",
+                     Meiryo,
+                     sans-serif;
+    }
+    .logo {
+        font-family: 'Montserrat Subrayada', sans-serif;
+    }
 
+    .heading {
+        font-family: 'Alegreya Sans SC', sans-serif;
+    }
 
   .content {
       width: 70%;
@@ -36,10 +42,6 @@
     font-size: 1.1rem;
     letter-spacing: 0.6px;
     line-height: 1.8;
-  }
-
-  .logo {
-    font-family: "dot_bold";
   }
 
   .trophy-title {
