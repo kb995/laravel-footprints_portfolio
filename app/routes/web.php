@@ -3,6 +3,7 @@ Route::group(['middleware' => 'auth'], function() {
 
     // Trophy
     // 一覧
+    // # 18
     Route::get('/', 'TrophyController@index')->name('index');
     // 一覧（指定）
     Route::get('/trophies/{day}', 'TrophyController@trophies')->name('trophies');
