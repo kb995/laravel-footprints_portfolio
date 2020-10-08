@@ -7,7 +7,7 @@
 @section('content')
 <section class="container">
     <div class="w-50 mx-auto">
-    <h1 class="text-center my-5">Welcome</h1>
+    <h1 class="text-center my-5 heading">WELLCOME</h1>
 
     {{--  エラー表示  --}}
     @if ($errors->any())
@@ -24,7 +24,7 @@
     <div class="pl-4 border">
         <form action="{{ route('day.create') }}" method="post" class="mt-2 text-center py-2">
             @csrf
-            <label for="" class="date-text">New Day</label>
+            <label for="" class="heading">NEW</label>
             <input type="text" name="date" id="date" value="{{ date('Y/m/d') }}" />
             <button type="submit" class="btn btn-secondary btn-sm"><i class="fas fa-plus"></i></i></button>
         </form>
