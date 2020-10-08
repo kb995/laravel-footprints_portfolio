@@ -10,12 +10,13 @@ use App\User;
 
 class DayController extends Controller
 {
-    public function create(DayRequest $request, Day $day) {
+    public function store(DayRequest $request, Day $day) {
         $user = User::find(Auth::id());
         $day->date = $request->date;
         $day->user_id = Auth::id();
         $days = $user->days()->orderBy('date', 'desc')->get();
         $user->day()->save($day);
-        return view('index', compact('days', 'day'));
+
+        return redirect()->route('trophies', ['day' => $day]);
     }
 }

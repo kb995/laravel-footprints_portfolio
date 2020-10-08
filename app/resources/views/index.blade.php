@@ -2,7 +2,11 @@
 
 @section('styles')
     @include('libs.flatpickr.styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+@endsection
+
 @section('content')
+
 <section class="container">
     <div class="content mx-auto">
         <h1 class="text-center my-5 heading">TROPHY</h1>
@@ -42,18 +46,18 @@
                 @csrf
                 <label for="" class="date-text pr-3 my-auto title">DAYS</label>
                 @isset($days)
-                <select onChange="location.href=value;" class="mr-4">
-                    @foreach($days as $day_list)
-                        @if ($loop->first)
-                        <option selected>
-                            日付選択
-                        </option>
-                        @endif
-                        <option value="{{ route('trophies', ['day' => $day_list]) }}">
-                            {{ $day_list->date }}
-                        </option>
-                    @endforeach
-                </select>
+                    <select onChange="location.href=value;" class="mr-4">
+                        @foreach($days as $day_list)
+                            @if ($loop->first)
+                            <option selected>
+                                日付選択
+                            </option>
+                            @endif
+                            <option value="{{ route('trophies', ['day' => $day_list]) }}">
+                                {{ $day_list->date }}
+                            </option>
+                        @endforeach
+                    </select>
                 @endisset
                 <label for="" class="date-text pr-2 my-auto title">NEW</label>
                 <input class="pl-2" type="text" name="date" id="date" value="{{ date('Y/m/d') }}" />
@@ -117,7 +121,15 @@
                     </td>
                 </tr>
                 @endforeach
+
                 @endisset
+                {{--  @empty($trophies)
+                    <tr>
+                        <td class="trophy-text_copper">
+                            何も登録されていません
+                        </td>
+                    </tr>
+                @endempty  --}}
             </div>
         </table>
     </div>
@@ -126,6 +138,7 @@
 @endsection
 
 @section('scripts')
+    {{--  flatpickr  --}}
     <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ja.js"></script>
     <script>
@@ -134,5 +147,21 @@
         dateFormat: "Y/m/d",
         minDate: new Date()
     });
+    </script>
+
+    {{--  toaster  --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        @if (session('flash_message'))
+            $(function () {
+                    toastr.success('{{ session('flash_message') }}');
+            });
+        @endif
+        @if (session('msg_danger'))
+            $(function () {
+                toastr.danger('{{ session('msg_danger') }}');
+            });
+        @endif
     </script>
 @endsection
